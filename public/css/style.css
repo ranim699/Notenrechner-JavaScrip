@@ -1,0 +1,240 @@
+/* Grade Calculator – stylesheet (mobile first) */
+
+:root {
+  --primary: #0b5e8e;        /* calm blue */
+  --primary-dark: #084768;
+  --bg: #f4f7fa;
+  --card: #ffffff;
+  --text: #1f2933;
+  --muted: #616e7c;
+  --border: #d9e2ec;
+  --pass: #1f7a4d;
+  --pass-bg: #e3f4ea;
+  --fail: #b42318;
+  --fail-bg: #fdeceb;
+  --radius: 12px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.5;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.site-header {
+  background: linear-gradient(135deg, var(--primary) 0%, #1985a1 100%);
+  color: #fff;
+  padding: 1.75rem 0;
+  margin-bottom: 1.5rem;
+}
+
+.site-header h1 { margin: 0 0 0.25rem; font-size: 1.8rem; }
+.subtitle { margin: 0; opacity: 0.9; }
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.toolbar label { font-weight: 600; }
+
+select, .btn {
+  font: inherit;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fff;
+}
+
+select:focus-visible, .btn:focus-visible, input:focus-visible {
+  outline: 3px solid #f2b33d;
+  outline-offset: 2px;
+}
+
+.btn { cursor: pointer; }
+.btn-secondary:hover { background: var(--fail-bg); border-color: var(--fail); }
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: 0 2px 10px rgba(16, 42, 67, 0.07);
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.card h2 {
+  margin: 0 0 1rem;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.card h3 { font-size: 1rem; margin: 1.25rem 0 0.5rem; }
+
+.cp-badge {
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: #e6f0f7;
+  color: var(--primary-dark);
+  border-radius: 999px;
+  padding: 0.1rem 0.6rem;
+}
+
+/* ---------- Module tables ---------- */
+
+.module-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.module-table th {
+  text-align: left;
+  color: var(--muted);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  border-bottom: 2px solid var(--border);
+  padding: 0.4rem;
+}
+
+.module-table td {
+  border-bottom: 1px solid var(--border);
+  padding: 0.55rem 0.4rem;
+  vertical-align: middle;
+}
+
+.module-name { display: block; }
+
+.choice-select {
+  margin-top: 0.35rem;
+  max-width: 100%;
+  font-size: 0.85rem;
+}
+
+.tag {
+  font-size: 0.72rem;
+  background: #eef1f4;
+  color: var(--muted);
+  border-radius: 999px;
+  padding: 0.05rem 0.5rem;
+}
+
+.thesis-cell { display: flex; flex-direction: column; gap: 0.4rem; }
+.grade-input { display: inline-flex; flex-direction: column; }
+.grade-input small { color: var(--muted); font-size: 0.75rem; }
+
+.passed-check { display: inline-flex; align-items: center; gap: 0.35rem; cursor: pointer; }
+.passed-check input { width: 18px; height: 18px; accent-color: var(--pass); }
+
+.chip {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: 999px;
+  padding: 0.15rem 0.6rem;
+  background: #eef1f4;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.chip-pass { background: var(--pass-bg); color: var(--pass); }
+.chip-fail { background: var(--fail-bg); color: var(--fail); }
+
+/* ---------- Summary ---------- */
+
+.big-grade {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.big-grade-value {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--primary);
+  line-height: 1;
+}
+
+.big-grade-band { font-weight: 600; }
+
+.hint { color: var(--muted); font-size: 0.85rem; }
+
+.progress {
+  background: #e6edf3;
+  border-radius: 999px;
+  height: 12px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  background: var(--pass);
+  height: 100%;
+  width: 0;
+  transition: width 0.3s;
+}
+
+.semester-list, .failed-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.semester-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.3rem 0;
+  border-bottom: 1px dashed var(--border);
+}
+
+.failed-list li {
+  color: var(--fail);
+  padding: 0.2rem 0;
+}
+
+.failed-list li::before { content: "✗ "; }
+
+#target { margin: 0.5rem 0; }
+
+.rules ul { padding-left: 1.1rem; margin: 0; }
+.rules li { margin-bottom: 0.4rem; font-size: 0.9rem; }
+
+.site-footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.85rem;
+  padding: 1rem 0 2rem;
+}
+
+/* ---------- Larger screens ---------- */
+
+@media (min-width: 960px) {
+  .layout { grid-template-columns: 1fr 360px; }
+  .summary { position: sticky; top: 1rem; align-self: start; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}

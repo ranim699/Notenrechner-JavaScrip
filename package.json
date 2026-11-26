@@ -1,0 +1,13 @@
+{
+  "name": "grade-calculator-fhdo-wi",
+  "version": "2.0.0",
+  "description": "Grade calculator for the Bachelor Wirtschaftsinformatik at FH Dortmund (German grading system, weighted by credit points)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node tests/gradeCalculator.test.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

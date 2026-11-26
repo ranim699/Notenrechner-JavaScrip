@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Grade calculator for the Bachelor Wirtschaftsinformatik at FH Dortmund – German grading system, weighted by credit points.">
+  <title>Grade Calculator – Wirtschaftsinformatik FH Dortmund</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1>🎓 Grade Calculator</h1>
+      <p class="subtitle">Bachelor Wirtschaftsinformatik · FH Dortmund · German grading system (1,0 – 5,0)</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="toolbar" aria-label="Settings">
+      <label for="plan-select">Study programme</label>
+      <select id="plan-select"></select>
+      <button type="button" class="btn btn-secondary" id="reset-btn">Reset all grades</button>
+    </section>
+
+    <div class="layout">
+      <!-- Filled by js/app.js: one card per semester -->
+      <section id="semesters" aria-label="Modules by semester"></section>
+
+      <aside class="summary" aria-label="Results">
+        <div class="card">
+          <h2>Your results</h2>
+
+          <div class="big-grade">
+            <span class="big-grade-value" id="average">–</span>
+            <span class="big-grade-band" id="band">Enter your first grade</span>
+          </div>
+          <p class="hint" id="average-basis"></p>
+
+          <h3>Credit points</h3>
+          <div class="progress" aria-hidden="true"><div class="progress-bar" id="cp-bar"></div></div>
+          <p id="cp-text"></p>
+
+          <h3>Average per semester</h3>
+          <ul class="semester-list" id="semester-averages"></ul>
+
+          <div id="failed-box" hidden>
+            <h3>To retake (5,0)</h3>
+            <ul class="failed-list" id="failed-list"></ul>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Target grade</h2>
+          <label for="target">Which final grade do you want to reach?</label>
+          <select id="target"></select>
+          <p id="target-result" aria-live="polite"></p>
+        </div>
+
+        <div class="card rules">
+          <h2>How the grade is calculated</h2>
+          <ul>
+            <li>Grades: 1,0 · 1,3 · 1,7 · 2,0 · 2,3 · 2,7 · 3,0 · 3,3 · 3,7 · 4,0 · 5,0. Passed with 4,0 or better.</li>
+            <li>The final grade is the average of all graded modules, weighted by credit points.</li>
+            <li>Only the first decimal counts – the rest is cut off, not rounded (2,38 → 2,3).</li>
+            <li>Ungraded modules (Lern- u. Arbeitstechniken, Technisches Englisch, Seminar Methodik, Praxissemester) do not count.</li>
+            <li>Thesis 80 % + colloquium 20 %, together 15 CP.</li>
+            <li>Up to 1,5 very good · up to 2,5 good · up to 3,5 satisfactory · up to 4,0 sufficient.</li>
+          </ul>
+          <p class="hint">Sources: Rahmenprüfungsordnung FH Dortmund § 9 and § 35; Studiengangsprüfungsordnung Wirtschaftsinformatik § 33, § 35, Anlage 1 and 2. Your grades are only saved in this browser.</p>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Unofficial tool for planning – the grades in the official FH Dortmund portal are binding.</p>
+    </div>
+  </footer>
+
+  <script src="js/studyPlan.js"></script>
+  <script src="js/gradeCalculator.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
